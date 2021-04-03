@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:/www.thymeleaf.org" th:replace="courses/base::layout(~{::section})">
+<!-- th:replace="user/base::layout(~{::section})" -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section>
+
+        <!-- th:action="${user/toaddcourse}" -->
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+
+                <div class="my-card mt-5">
+                    <div th:if="${session.message}" th:classappend="${'alert-'+session.message.type}" class="alert" role="alert">
+                        <p class="text-center" th:text="${session.message.contect}"></p>
+                        <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+
+                    </div>
+                    <h1 class="text-center">Update Course !!</h1>
+                    <form action="#" method="POST" enctype="multipart/form-data" th:object="${addcourse}" th:action="@{/user/update-process}">
+                        <!-- <form action="#" method="POST" th:object="${addcourse}" enctype="multipart/form-data" th:action="@{process-addcourse}"> -->
+                        <input name="aid" type="hidden" th:value="${addcourse.aid}">
+
+
+                        <!-- name -->
+                        <div class="form-group mt-1">
+                            <label for="name_field">Name</label>
+
+                            <input type="text" name="name" class="form-control" th:value="${addcourse.name}" id="name_field" aria-describedby="emailHelp" placeholder="Enter here" required />
+                        </div>
+
+                        <!-- course name -->
+                        <div class="form-group mt-1">
+                            <label for="name_field">Course Name</label>
+
+                            <input type="text" name="coursename" class="form-control" th:value="${addcourse.coursename}" id="name_field" aria-describedby="emailHelp" placeholder="Enter here" required />
+                        </div>
+
+                        <!-- price -->
+                        <div class="form-group mt-1">
+                            <label for="name_field">Price</label>
+
+                            <input type="number" name="price" class="form-control" th:value="${addcourse.price}" id="name_field" aria-describedby="emailHelp" placeholder="Enter here" required />
+                        </div>
+
+                        <!-- discription -->
+                        <div class="from-group mt-1">
+
+                            <textarea name="description" id="mytextarea" th:text="${addcourse.description}" placeholder="Enter course description" rows="10" class="form-control" required></textarea>
+
+                        </div>
+
+                        <!-- image -->
+                        <div class="container text-center mt-3">
+                            <img style="width: 250px; height: 250px;" class="my_profile_picture" src="" th:src="@{'/image/'+${addcourse.image}}">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1">Change your course phote</label>
+                            <!-- <input type="file" class="form-control-file" id="exampleFormControlFile1" name="profileimage"> -->
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="profileimage">
+
+
+                        </div>
+
+                        <div class="container text-center mt-3">
+
+                            <button class="btn btn-outline-primary">Save Course</button>
+
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- script link for tintmce keybord -->
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+        <!-- <script>
+            tinymce.init({
+                selector: '#mytextarea'
+            });
+        </script> -->
+        <!--  -->
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="user/base::layout(~{::section})">
+<!-- th:replace="user/base::layout(~{::section})" -->
+<!-- xmlns:th="http://www.thymeleaf.org"  -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">your course</title>
+</head>
+
+<body>
+
+    <section>
+        <h1 class="text-center">this is your course</h1>
+        <div class="text-center">
+            <div class="divider"></div>
+            <div class="row design">
+                <div th:each=" e , c : ${courses}">
+                    <div class="col-md-4" th:with="f=(${c.count} % 3)">
+                        <div class="card cards" th:if="${f==0}">
+
+                            <img class="my_profile_picture" th:src="@{'/image/'+${e.image}}">
+                            <!-- th:src="@{'/image/'+${e.image}}" -->
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${e.nameofcourse}">Course name</h5>
+                                <h5 th:text="${e.priceofcourse}" class="card-text">Price</h5>
+                                <a href="#" class="btn btn-outline-primary">My Course</a>
+                                <a href="#" style="padding-left: 70px;" th:onclick="|deleteCourse(${e.cid})|" ><i class="fa fa-trash"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--th:with="isEven=${prodStat.count % 2 == 0}"-->
+                    <!-- th:with="isEven=(${prodStat.count} % 2 == 0)" -->
+                    <!-- th:if="(${c}%4==0)" -->
+                    <div class="col-md-4" th:with="f=(${c.count} % 3)">
+                        <div class="card cards" th:if="(${f}==1)">
+
+                            <img class="my_profile_picture" th:src="@{'/image/'+${e.image}}">
+                            <!-- th:src="@{'/image/'+${e.image}}" -->
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${e.nameofcourse}">Course name</h5>
+                                <h5 th:text="${e.priceofcourse}" class="card-text">Price</h5>
+                                <a href="#" class="btn btn-outline-primary">My Course</a>
+                                <!-- <a href="#" style="padding-left: 70px;" th:onclick="|deleteCourse(${e.cid})|"><i class="fa fa-trash"></i></a> -->
+                                <a href="#" style="padding-left: 70px;" th:onclick="|deleteCourse(${e.cid})|"><i class="fa fa-trash"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- th:onclick="|deleteContact(${e.cid})|" -->
+                    <!--  -->
+                    <div class="col-md-4" th:with="f=(${c.count} % 3)">
+                        <div class="card cards" th:if="(${f}==2)">
+
+                            <img class="my_profile_picture" th:src="@{'/image/'+${e.image}}">
+                            <!-- th:src="@{'/image/'+${e.image}}" -->
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${e.nameofcourse}">Course name</h5>
+                                <h5 th:text="${e.priceofcourse}" class="card-text">Price</h5>
+                                <a href="#" class="btn btn-outline-primary">My Course</a>
+                                <a href="#" style="padding-left: 70px;" th:onclick="|deleteCourse(${e.cid})|" ><i class="fa fa-trash"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  -->
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:/www.thymeleaf.org" th:replace="courses/base::layout(~{::section})">
+<!-- th:replace="user/base::layout(~{::section})" -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add course home page</title>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="mt-5 text-center">
+                <h1>This is add course home page</h1>
+                <div th:if="${session.message}" th:classappend="${'alert-'+session.message.type}" class="alert" role="alert">
+                    <p class="text-center" th:text="${session.message.content}"></p>
+                    <th:block th:text="${#session.removeAttribute('message')}"></th:block>
+
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="row design">
+                <div th:each=" e , c : ${addcourse}">
+                    <div class="col-md-4" th:with="f=(${c.count} % 3)">
+                        <div class="card cards" th:if="${f==0}">
+
+                            <img class="my_profile_picture" th:src="@{'/image/'+${e.image}}">
+                            <!-- th:src="@{'/image/'+${e.image}}" -->
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${e.coursename}">Course name</h5>
+                                <h5 th:text="${e.price}" class="card-text">Price</h5>
+                                <a href="#" class="btn btn-primary">My Course</a>
+                                <!-- update -->
+                                <!-- <a style="padding-left: 60px ;" th:href="@{'/user/update/'+${e.aid}}"><i class="fas fa-pen"></i></a> -->
+                             <a style="padding-left: 70px ;"th:href="@{'/user/update/'+${e.aid}}"><i id="update" class="fas fa-pen"></i></a> 
+                             
+
+                                <!-- delet -->
+                                <a style="margin-left: 30px;" th:href="@{'/user/delet/'+${e.aid}}"><i id="icon" class="fa fa-trash"></i></a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--th:with="isEven=${prodStat.count % 2 == 0}"-->
+                    <!-- th:with="isEven=(${prodStat.count} % 2 == 0)" -->
+                    <!-- th:if="(${c}%4==0)" -->
+                    <div class="col-md-4" th:with="f=(${c.count} % 3)">
+                        <div class="card cards" th:if="(${f}==1)">
+
+                            <img class="my_profile_picture" th:src="@{'/image/'+${e.image}}">
+                            <!-- th:src="@{'/image/'+${e.image}}" -->
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${e.coursename}">Course name</h5>
+                                <h5 th:text="${e.price}" class="card-text">Price</h5>
+                                <a href="#" class="btn btn-primary">My Course</a>
+                                <!-- update -->
+                                <a style="padding-left: 70px ;" th:href="@{'/user/update/'+${e.aid}}"><i id="update" class="fas fa-pen"></i></a>
+                                <!-- delet -->
+                                <a  style="margin-left: 30px;" th:href="@{'/user/delet/'+${e.aid}}"><i id="icon" class="fa fa-trash"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  -->
+                    <div class="col-md-4" th:with="f=(${c.count} % 3)">
+                        <div class="card cards" th:if="(${f}==2)">
+
+                            <img class="my_profile_picture" th:src="@{'/image/'+${e.image}}">
+                            <!-- th:src="@{'/image/'+${e.image}}" -->
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${e.coursename}">Course name</h5>
+                                <h5 th:text="${e.price}" class="card-text">Price</h5>
+                                <a href="#" class="btn btn-primary">My Course</a>
+                                <!-- update -->
+                                <a style="padding-left: 70px ;" th:href="@{'/user/update/'+${e.aid}}"><i id="update" class="fas fa-pen"></i></a>
+                                <!-- delet -->
+                                <a style="margin-left: 30px;" th:href="@{'/user/delet/'+${e.aid}}"><i id="icon" class="fa fa-trash"></i></a>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--  -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+</body>
+
+</html>

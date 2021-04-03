@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="user/base::layout(~{::section})">
+<!-- th:replace="user/base::layout(~{::section})" -->
+<!-- xmlns:th="http://www.thymeleaf.org"  -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">your course</title>
+</head>
+
+<body>
+
+    <section>
+        <h1 class="text-center">this is course detaile</h1>
+        <input type="hidden" th:value="${addcourse.aid}">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="container text-center">
+                            <img style="width: 80%; height: 69%;" th:src="@{'/image/'+${addcourse.image}}">
+
+                        </div>
+                        <h1 class="text-center" th:text="${addcourse.coursename}"></h1>
+                        <div class="dividers"></div>
+                        <h1 class="text-center" th:text="${'COURSE PRICE : '+addcourse.price}"></h1>
+                        <p class="text-center" th:text="${addcourse.name}"></p>
+                        <p style="margin-left: 10%; margin-top: 5%; font-size: 25px;" th:text="${addcourse.description}"></p>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-outline-danger" th:href="@{/user/home}">Back Home</a>
+                            <a href="#" class="btn btn-outline-primary" th:href="@{'/user/enroll/'+${addcourse.aid}}">Enroll Home</a>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
