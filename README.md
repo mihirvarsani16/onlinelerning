@@ -2,6 +2,13 @@
 this is a online lerning project.
 it project i am devevloped during my lerning time.
 
+//note
+
+1. java 14 use
+2. mysql data base
+
+* code is in the online lerning folder. 
+
 Tools used in this project
 
 front : html , css , bootstrap ,javascript , tymeleaf , json.
